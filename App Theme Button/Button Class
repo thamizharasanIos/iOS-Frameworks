@@ -10,3 +10,55 @@ class AppThemeButton: LoadingButton{
     }
     
 }
+extension UIViewController{
+
+func showLoader(){
+        let loaderView: UIView = {
+            let loaderView                      = UIView(frame: UIScreen.main.bounds)
+            loaderView.backgroundColor          = UIColor(white: 0.0, alpha: 0.6)
+            let loaderCenterView                = UIView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
+            loaderCenterView.backgroundColor    = UIColor(white: 0.0, alpha: 0.8)
+            loaderCenterView.clipsToBounds      = true
+            loaderCenterView.layer.cornerRadius = 10
+            
+            var loader:UIActivityIndicatorView!
+            if #available(iOS 13.0, *) {
+                loader                          = UIActivityIndicatorView(style: .large)
+            } else {
+                loader                          = UIActivityIndicatorView(style: .whiteLarge)
+            }
+            
+            loader.frame.origin.y               = 15
+            loader.center.x                     = loaderCenterView.center.x
+            loader.transform                    = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            loader.color                        = .white
+            loader.startAnimating()
+            loaderCenterView.addSubview(loader)
+            
+            let loadingLabel                    = UILabel(frame: CGRect(x: 0, y: 72, width: 120, height: 24))
+            loadingLabel.center.x               = loaderCenterView.center.x
+            loadingLabel.textColor              = UIColor.white
+            loadingLabel.backgroundColor        = UIColor.clear
+            loadingLabel.textAlignment          = .center
+            loadingLabel.text                   = "Loading.."
+            loaderCenterView.center             = loaderView.center
+            loaderCenterView.addSubview(loadingLabel)
+            loaderView.addSubview(loaderCenterView)
+            return loaderView
+        }()
+        loaderView.tag = -10
+        self.parent?.view.window?.addSubview(loaderView)
+    }
+        
+    func hideLoader() {
+        DispatchQueue.main.async {
+            if let loaderView = self.parent?.view.window?.viewWithTag(-10){
+                loaderView.removeFromSuperview()
+            }
+        }
+    }
+
+}
+
+
+
