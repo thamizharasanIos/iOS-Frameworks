@@ -1,0 +1,34 @@
+Library Name: DatePicker
+Library Purpose: Date
+Library Description: Shows Date with year
+Platform: iOS
+Code snippet: 
+
+let datePicker = UIDatePicker()
+
+//Formate Date
+ datePicker.datePickerMode = .date
+
+//ToolBar
+   
+ let toolbar = UIToolbar();
+ toolbar.sizeToFit()
+ let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+ let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+ let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+
+ toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
+
+ textfield.inputAccessoryView = toolbar
+ textfield.inputView = datePicker
+ 
+ @objc func donedatePicker(){
+   let formatter = DateFormatter()
+   formatter.dateFormat = "dd/MM/yyyy"
+   txtDatePicker.text = formatter.string(from: datePicker.date)
+   self.view.endEditing(true)
+ }
+
+ @objc func cancelDatePicker(){
+    self.view.endEditing(true)
+  }
