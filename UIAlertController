@@ -1,0 +1,11 @@
+Library Name: UIAlertController
+Library Purpose: Alert
+Library Description: configure alerts and action sheets with the message that you want to display and the actions from which to choose.
+Platform: iOS
+Code snippet: 
+
+let alert = UIAlertController(title: "My Alert", message: "This is an alert.", preferredStyle: .alert) 
+alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in 
+NSLog("The \"OK\" alert occured.")
+}))
+self.present(alert, animated: true, completion: nil)
