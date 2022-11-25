@@ -1,0 +1,10 @@
+Library Name: Calendar
+Library Purpose: Date
+Library Description: Shows calendar with year
+Platform: iOS
+Code snippet: 
+
+let calendarView = UICalendarView()
+let gregorianCalendar = Calendar(identifier: .gregorian)
+calendarView.calendar = gregorianCalendar
+calendarView.fontDesign = .rounded
