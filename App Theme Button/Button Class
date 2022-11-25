@@ -1,0 +1,12 @@
+# App Theme button with Loader
+
+class AppThemeButton: LoadingButton{
+
+    override func draw(_ rect: CGRect) {
+        self.backgroundColor = UIColor(hexString: "#79A751") // Set your App theme colour code
+        self.setTitleColor(.white, for: .normal) // Set your button text colour
+        self.layer.masksToBounds = true
+        self.layer.cornerRadius = 4
+    }
+    
+}
