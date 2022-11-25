@@ -1,5 +1,8 @@
 **How to validate**
 
+
+Add the Validation file in your project or copy the extension.
+
 Check if the email is valid with
 
 ```
